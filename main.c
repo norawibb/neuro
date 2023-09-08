@@ -116,7 +116,7 @@ void printNeurotron(Neurotron *neurotron)
     printf("\n\n");
 }
 
-int main(int, char **)
+int main(int argc, char **argv)
 {
     printf("\n--<< Welcome to Neuro >>--\n\n");
     srand(time(NULL));
