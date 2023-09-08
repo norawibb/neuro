@@ -19,6 +19,10 @@ int randRange(int min, int max)
     return (rand() % (max - min)) + min;
 }
 
+/* Neurotron first-time generation function
+ * This generates a very simple brain, each neuron with only one random connection.
+ * The neurons are stored in the order: eyes -> deep -> hands
+ */
 Neurotron *createNeurotron(int eyes_count, int deep_count, int hands_count)
 {
     Neurotron *neurotron = malloc(sizeof(Neurotron));
@@ -66,8 +70,10 @@ void updateNeurotron(Neurotron *neurotron)
     // TODO: eyes will update here (maybe)
 
     bool value = false;
+    // loop through connection starts
     for (int i = 0; i < neurotron->deep_count + neurotron->hands_count; i++)
     {
+        // loop through that connection
         for (int j = neurotron->connection_starts[i]; j < neurotron->connection_starts[i] + neurotron->connection_amounts[i]; j++)
         {
             if (value == true)
@@ -79,14 +85,16 @@ void updateNeurotron(Neurotron *neurotron)
                 value = true;
             }
         }
-        neurotron->values[neurotron->connection_inputs[i]] = value;
+        neurotron->values[i+neurotron->eyes_count] = value;
         value = false;
     }
 }
 
+// Prints values of neurotron data
+// Connections are printed with eyes (E) first, then the input value indices grouped between commas
 void printNeurotron(Neurotron *neurotron)
 {
-    printf("Neuron counts: %dE %dD %dH %dT\n", neurotron->eyes_count, neurotron->deep_count, neurotron->hands_count, neurotron->neuron_count);
+    printf("Neuron counts: %d eyes, %d deep, %d hands, %d total\n", neurotron->eyes_count, neurotron->deep_count, neurotron->hands_count, neurotron->neuron_count);
     printf("Values: ");
     for (int i = 0; i < neurotron->neuron_count; i++)
     {
@@ -95,7 +103,7 @@ void printNeurotron(Neurotron *neurotron)
     printf("\nConnections: ");
     for (int i = 0; i < neurotron->eyes_count; i++)
     {
-        printf("E ");
+        printf("e ");
     }
     for (int i = 0; i < neurotron->deep_count + neurotron->hands_count; i++)
     {
@@ -115,13 +123,21 @@ int main(int, char **)
     clock_t start_time, end_time;
     Neurotron *neurotron = createNeurotron(8, 17, 5);
     printNeurotron(neurotron);
+    //start_time = clock();
+    //end_time = clock();
+    //printf("Elapsed time: %.2f seconds\n\n", (double)(end_time - start_time) / CLOCKS_PER_SEC);
+    updateNeurotron(neurotron);
+    printNeurotron(neurotron);
+    updateNeurotron(neurotron);
+    printNeurotron(neurotron);
+    updateNeurotron(neurotron);
+    printNeurotron(neurotron);
     start_time = clock();
-    for (int i = 0; i < 10000000; i++)
-    {
+    for (int i=0; i<10000000; i++) {
         updateNeurotron(neurotron);
     }
     end_time = clock();
-    printf("Elapsed time after 10000000 updates: %.2f seconds\n", (double)(end_time - start_time) / CLOCKS_PER_SEC);
+    printf("Elapsed time: %.2f seconds\n\n", (double)(end_time - start_time) / CLOCKS_PER_SEC);
     printNeurotron(neurotron);
     free(neurotron);
     return 0;
