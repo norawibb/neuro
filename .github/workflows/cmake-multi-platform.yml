@@ -77,5 +77,5 @@ jobs:
     - name: Create Release Artifacts
       run: |
         mkdir release
-        cp -r ${{ steps.strings.outputs.build-output-dir }}
+        cp -r ${{ steps.strings.outputs.build-output-dir }}/* release/
 
