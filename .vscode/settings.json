@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "neurotron.h": "c",
+        "utilities.h": "c",
+        "limits": "c"
+    }
+}
