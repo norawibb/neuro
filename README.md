@@ -23,7 +23,7 @@ This project makes use of the following third-party libraries:
 
 - **Website**: [GLM](https://github.com/g-truc/glm)
 
-### Dear ImGui
+### ImGui
 
-- **Website**: [Dear ImGui](https://github.com/ocornut/imgui)
+- **Website**: [ImGui](https://github.com/ocornut/imgui)
 
