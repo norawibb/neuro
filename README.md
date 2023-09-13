@@ -10,7 +10,7 @@ This project makes use of the following third-party libraries:
 - [OpenGL](https://www.opengl.org/)
  
 - [GLEW](http://glew.sourceforge.net/)
-- 
+ 
 - [GLFW](https://www.glfw.org/)
 
 - [GLM](https://github.com/g-truc/glm)
