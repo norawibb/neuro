@@ -1,6 +1,7 @@
 #pragma once
 #include <stdbool.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct
 {
@@ -16,3 +17,7 @@ Neurotron *createNeurotron(int eyes_count, int deep_count, int hands_count);
 void updateNeurotron(Neurotron *neurotron);
 
 void printNeurotron(Neurotron *neurotron);
+
+FILE *createNeurotronFile(Neurotron *neurotron, char *filename);
+
+void exportNeurotronState(Neurotron *neurotron, FILE *fptr);

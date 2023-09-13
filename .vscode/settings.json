@@ -2,6 +2,10 @@
     "files.associations": {
         "neurotron.h": "c",
         "utilities.h": "c",
-        "limits": "c"
-    }
+        "limits": "c",
+        "matrix_transform.hpp": "c",
+        "stdio.h": "c"
+    },
+    "cmake.configureOnOpen": true,
+    "C_Cpp.errorSquiggles": "disabled"
 }

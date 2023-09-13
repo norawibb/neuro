@@ -1,12 +1,4 @@
-// Jinora
-
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "neurotron.h"
-#include "utilities.h"
-
-#include "SDL.h"
+/*#include "SDL.h"
 #include "SDL2/SDL.h"
 #define WIDTH 400
 #define HEIGHT 900
@@ -32,7 +24,7 @@ typedef struct
 {
     int *x, *y;
 } NeurotronCoordinates;
-/*
+
 Coordinate neuronToPosition(Neurotron *neurotron, int neuron_index)
 {
     Coordinate coordinate;
@@ -44,7 +36,7 @@ Coordinate neuronToPosition(Neurotron *neurotron, int neuron_index)
     coordinate.y += NEURONSIZE;
     return coordinate;
 }
-*/
+
 NeurotronCoordinates *setupCoordinates(Neurotron *neurotron)
 {
     NeurotronCoordinates *coordinates;
@@ -88,12 +80,9 @@ void drawNeurotron(SDL_Renderer *renderer, Neurotron *neurotron, NeurotronCoordi
         drawRectangle(renderer, coordinates->x[i + neurotron->eyes_count + neurotron->deep_count], coordinates->y[i + neurotron->eyes_count + neurotron->deep_count], 95 + (neurotron->values[neurotron->eyes_count + neurotron->deep_count + i] * 160), 0, 0);
     }
 }
+*/
 
-int main(int argc, char **argv)
-{
-    printf("\n--<< Welcome to Neuro >>--\n\n");
-    srand(time(NULL));
-
+    /*
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, SDL_WINDOW_SHOWN, &screen, &renderer);
     if (!screen)
@@ -101,42 +90,21 @@ int main(int argc, char **argv)
         printf("InitSetup failed to create window\n");
     }
     SDL_SetWindowTitle(screen, "fuck");
+    */
 
-    clock_t start_time, end_time;
-    Neurotron *neurotron = createNeurotron(8, 17, 5);
-    printNeurotron(neurotron);
-    //
-    updateNeurotron(neurotron);
-    printNeurotron(neurotron);
-    updateNeurotron(neurotron);
-    printNeurotron(neurotron);
-    updateNeurotron(neurotron);
-    printNeurotron(neurotron);
-    neurotron->values[2] = true;
-    neurotron->values[4] = true;
-    neurotron->values[7] = true;
+       /*
     NeurotronCoordinates *coordinates = setupCoordinates(neurotron);
     drawNeurotron(renderer, neurotron, coordinates);
     free(coordinates->x);
     free(coordinates->y);
     free(coordinates);
     SDL_RenderPresent(renderer);
+*/
 
-    start_time = clock();
-    for (int i = 0; i < 10000000; i++)
-    {
-        updateNeurotron(neurotron);
-    }
-    end_time = clock();
-    printf("Elapsed time: %.2f seconds\n\n", (double)(end_time - start_time) / CLOCKS_PER_SEC);
-    printNeurotron(neurotron);
-    free(neurotron);
-
+    /*
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(screen);
     // Quit SDL
     SDL_Quit();
-
     exit(0);
-    return 0;
-}
+    */

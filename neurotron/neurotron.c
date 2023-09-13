@@ -1,7 +1,6 @@
 #include "neurotron.h"
 #include "utilities.h"
 
-
 /* Neurotron first-time generation function
  * This generates a very simple brain, each neuron with only one random connection.
  * The neurons are stored in the order: eyes -> deep -> hands
@@ -72,11 +71,10 @@ void updateNeurotron(Neurotron *neurotron)
                 value = true;
             }
         }
-        neurotron->values[i+neurotron->eyes_count] = value;
+        neurotron->values[i + neurotron->eyes_count] = value;
         value = false;
     }
 }
-
 
 // Prints values of neurotron data
 // Connections are printed with eyes (E) first, then the input value indices grouped between commas
@@ -98,8 +96,41 @@ void printNeurotron(Neurotron *neurotron)
         printf(", ");
         for (int j = neurotron->connection_starts[i]; j < neurotron->connection_starts[i] + neurotron->connection_amounts[i]; j++)
         {
-            printf("%d ", neurotron->connection_inputs[j]);
+            printf("%ld ", neurotron->connection_inputs[j]);
         }
     }
     printf("\n\n");
+}
+
+// Creates an output file to store the states of a neurotron and returns the file pointer
+// It also writes initial information to the file: eyes,deep,hands counts and all the connections.
+FILE *createNeurotronFile(Neurotron *neurotron, char *filename)
+{
+    FILE *fptr;
+
+    fptr = fopen(filename, "w");
+
+    //
+    fprintf(fptr, "%d,%d,%d\n", neurotron->eyes_count, neurotron->deep_count, neurotron->hands_count);
+    for (int i = 0; i < neurotron->deep_count + neurotron->hands_count; i++)
+    {
+        for (int j = neurotron->connection_starts[i]; j < neurotron->connection_starts[i] + neurotron->connection_amounts[i]; j++)
+        {
+            fprintf(fptr, "%ld ", neurotron->connection_inputs[j]);
+        }
+        fprintf(fptr, ",");
+    }
+    fprintf(fptr,"\n");
+    return fptr;
+}
+
+// Given an existing neurotron output file pointer,
+// this writes a single line to the file, the current neurotron value array
+void exportNeurotronState(Neurotron *neurotron, FILE *fptr)
+{
+    for (int i = 0; i < neurotron->neuron_count; i++)
+    {
+        fprintf(fptr,"%d", neurotron->values[i]);
+    }
+    fprintf(fptr,"\n");
 }
