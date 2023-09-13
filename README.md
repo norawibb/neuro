@@ -7,23 +7,13 @@ RANDOM NAND GATES MAKE SMART BRAIN
 
 This project makes use of the following third-party libraries:
 
-### OpenGL
+- [OpenGL](https://www.opengl.org/)
+ 
+- [GLEW](http://glew.sourceforge.net/)
+- 
+- [GLFW](https://www.glfw.org/)
 
-- **Website**: [OpenGL](https://www.opengl.org/)
+- [GLM](https://github.com/g-truc/glm)
 
-### GLEW
-
-- **Website**: [GLEW](http://glew.sourceforge.net/)
-
-### GLFW
-
-- **Website**: [GLFW](https://www.glfw.org/)
-
-### GLM
-
-- **Website**: [GLM](https://github.com/g-truc/glm)
-
-### ImGui
-
-- **Website**: [ImGui](https://github.com/ocornut/imgui)
+- [ImGui](https://github.com/ocornut/imgui)
 
